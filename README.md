@@ -2,4 +2,4 @@
 
 ## Tabla de contenidos
 
-- **[Terraform](../../Ayudantia_Mingeso/tree/main/Terraform)**
+- **[Terraform](../../tree/main/Terraform)**

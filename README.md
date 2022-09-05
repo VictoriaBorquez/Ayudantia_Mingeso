@@ -2,4 +2,4 @@
 
 ## Tabla de contenidos
 
-- **[Terraform](../tree/main/Terraform)**
+- **[Terraform](/tree/main/Terraform)**

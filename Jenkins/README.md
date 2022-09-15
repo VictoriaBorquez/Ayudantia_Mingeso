@@ -8,3 +8,9 @@ https://www.jenkins.io/doc/book/installing/
 
 ## Documentación oficial
 https://www.jenkins.io/doc/
+
+Docker
+https://www.jenkins.io/doc/book/pipeline/docker/
+
+Sonarqube
+https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-jenkins/

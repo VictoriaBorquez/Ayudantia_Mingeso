@@ -1,0 +1,12 @@
+node{
+    def buildNumber = BUILD_NUMBER
+    stage("1. Git Clone"){
+        git url: 'https://github.com/VictoriaBorquez/test.git', branch: 'main'
+        echo "Git Clone OK"
+    }
+    stage("2. JUnit"){
+        def mavenHome= tool name: "Maven", type: "maven"
+        sh "${mavenHome}/bin/mvn clean package"
+        echo "JUnit OK"
+    }
+}

@@ -7,4 +7,4 @@
 - **[Jenkins](../../tree/main/Jenkins)**
 - **[Microservicios](../../tree/main/Microservicios)**
 - **[Git](../../tree/main/GIT)**
-- **[Git](../../tree/main/React)**
+- **[React](../../tree/main/React)**

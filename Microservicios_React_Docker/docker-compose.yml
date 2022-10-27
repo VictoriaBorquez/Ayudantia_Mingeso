@@ -1,0 +1,64 @@
+
+version: '2.2'
+services:
+    dbpostgresql:
+        image: "postgres:12"
+        container_name: dbpostgresql
+        networks:
+            - microservicios
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_DB: microservicio
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: password
+    car-service:
+        image: car-image
+        build: ./car-service
+        container_name: contenedor-car
+        networks:
+            - microservicios
+        ports:
+            - "8002:8002"
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresql:5432/microservicio
+            - SPRING_DATASOURCE_USERNAME=postgres
+            - SPRING_DATASOURCE_PASSWORD=password
+            - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+        depends_on:
+            - dbpostgresql
+    user-service:
+        image: user-image
+        build: ./user-service
+        container_name: contenedor-user
+        networks:
+            - microservicios
+        ports:
+            - "8003:8003"
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresql:5432/microservicio
+            - SPRING_DATASOURCE_USERNAME=postgres
+            - SPRING_DATASOURCE_PASSWORD=password
+            - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+        depends_on:
+            - dbpostgresql
+    react-service:
+        image: react-image
+        build: ./my-app
+        container_name: contenedor-react
+        networks:
+            - microservicios
+        ports:
+            - "3000:3000"
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresql:5432/microservicio
+            - SPRING_DATASOURCE_USERNAME=postgres
+            - SPRING_DATASOURCE_PASSWORD=password
+            - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+        depends_on:
+            - dbpostgresql
+            - user-service
+            - car-service
+networks:
+    microservicios:
+        driver: bridge

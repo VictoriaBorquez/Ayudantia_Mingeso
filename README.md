@@ -1,4 +1,4 @@
-# Ayudantía MINGESO
+# Ayudantía Métodos de Ingeniería de Software (MINGESO)
 
 ## Tabla de contenidos
 

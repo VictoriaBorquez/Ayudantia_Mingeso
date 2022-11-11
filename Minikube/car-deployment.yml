@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: car-deployment
+  labels:
+    app: car-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: car-deployment
+  template:
+    metadata:
+      labels:
+        app: car-deployment
+    spec:
+      containers:
+      - name: car-deployment
+        image: victoriaborquez/mingeso:car
+        ports:
+        - containerPort: 8001
